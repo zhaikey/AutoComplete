@@ -379,7 +379,7 @@
 
 						var templateUrl = isDefined(attrs.templateUrl) ? attrs.templateUrl : "'" + defaultTemplateUrl + "'";
 						var hintList = $compile('\
-							<div class="scroll-container">\
+							<div class="scroller-container">\
 								<iframe></iframe>\
 								<div class="scroller" ng-hide="hints.length < 1">\
 									<div class="hint"\
@@ -415,7 +415,7 @@
 					post: function (scope, element, attrs) {
 						var inputElem     = angular.element(element[0].querySelector('.text-entry'));
 						var hintInputElem = angular.element(element[0].querySelector('.hint-box'));
-						var hintList      = angular.element(element[0].querySelector('.scroll-container'));
+						var hintList      = angular.element(element[0].querySelector('.scroller-container'));
 
 						var modelCtrl = inputElem.controller('ngModel');
 						scope.ngModelCtrl = modelCtrl;

@@ -47,11 +47,11 @@
   display: block;
   cursor: pointer;
 }
-.auto-complete .text-entry:focus ~ .scroll-container,
-.auto-complete .scroll-container:hover {
+.auto-complete .text-entry:focus ~ .scroller-container,
+.auto-complete .scroller-container:hover {
   display: block;
 }
-.auto-complete .scroll-container {
+.auto-complete .scroller-container {
   position: absolute;
   display: none;
   padding: 0;
