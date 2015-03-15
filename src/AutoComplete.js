@@ -391,7 +391,7 @@
 									</div>\
 								</div>\
 								<div class="scroller no-results">\
-									<span class="no-results hint">{{no-resultsText}}</span>\
+									<span class="no-results hint">{{noResultsText}}</span>\
 								</div>\
 							</div>\
 						')(scope);
