@@ -1,17 +1,17 @@
 // Source: https://raw.githubusercontent.com/EnzeyNet/AutoComplete/master/dist/AutoComplete.css
 // This file is modified from the original source.
-.autoComplete {
+.auto-complete {
   position: relative;
   display: inline-block;
 }
-.autoComplete > iframe {
+.auto-complete > iframe {
   position: relative;
   top: 0px;
   left: 0px;
   background: transparent;
   background-color: transparent;
 }
-.autoComplete iframe {
+.auto-complete iframe {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -20,44 +20,44 @@
   border: none;
   margin: 0px;
 }
-.autoComplete input {
+.auto-complete input {
   width: 100%;
 }
-.autoComplete .hintBox {
+.auto-complete .hintBox {
   position: relative;
   color: #B0B0B0;
 }
-.autoComplete input::-ms-clear {
+.auto-complete input::-ms-clear {
   display: none;
   width: 0;
   height: 0;
 }
-.autoComplete .textEntry {
+.auto-complete .text-entry {
   position: absolute;
   top: 0px;
   left: 0px;
 }
-.autoComplete .textEntry:focus {
+.auto-complete .text-entry:focus {
   background: transparent;
   background-color: transparent;
 }
-.autoComplete .hint {
+.auto-complete .hint {
   padding: .2em .4em;
   position: relative;
   display: block;
   cursor: pointer;
 }
-.autoComplete .textEntry:focus ~ .scrollerContainer,
-.autoComplete .scrollerContainer:hover {
+.auto-complete .text-entry:focus ~ .scroll-container,
+.auto-complete .scroll-container:hover {
   display: block;
 }
-.autoComplete .scrollerContainer {
+.auto-complete .scroll-container {
   position: absolute;
   display: none;
   padding: 0;
   margin: 0;
 }
-.autoComplete .scroller {
+.auto-complete .scroller {
   display: block;
   position: relative;
   border: 1px solid;
@@ -66,23 +66,23 @@
   overflow: hidden;
   max-height: 8em;
 }
-.autoComplete .selectedHint {
+.auto-complete .selected-hint {
   background-color: lightblue;
 }
-.autoComplete .noResults {
+.auto-complete .no-results {
   display: none;
 }
-.autoComplete.noResults .noResults {
+.auto-complete.no-results .no-results {
   display: block;
   cursor: default;
 }
-.loading .textEntry {
+.loading .text-entry {
   padding-right: 1.5em;
 }
-.loading .loadingIndicator {
+.loading .loading-indicator {
   display: inline-block;
 }
-.loadingIndicator {
+.loading-indicator {
   display: none;
   position: absolute;
   top: .1em;
@@ -95,7 +95,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.loadingIndicator:before {
+.loading-indicator:before {
   display: block;
   width: 1em;
   height: 1em;

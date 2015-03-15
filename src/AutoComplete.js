@@ -215,7 +215,7 @@
 		var minimumChars = 1;
 		var silentPeriod = 250;
 		var isSelectionRequired = false;
-		var noResultsOnSelect = true;
+		var no-resultsOnSelect = true;
 
 		this.setPositionHintsFn = function(_positionHintsFn) {
 			if (angular.isFunction(_positionHintsFn)) {
@@ -231,8 +231,8 @@
 		this.isSelectionRequired = function(_isSelectionRequired) {
 			isSelectionRequired = !!_isSelectionRequired;
 		};
-		this.isNoResultsOnSelect = function(_noResultsOnSelect) {
-			noResultsOnSelect = !!_noResultsOnSelect;
+		this.isNoResultsOnSelect = function(_no-resultsOnSelect) {
+			no-resultsOnSelect = !!_no-resultsOnSelect;
 		};
 
 		this.$get = function() {
@@ -250,7 +250,7 @@
 					return isSelectionRequired;
 				},
 				isNoResultsOnSelect: function() {
-					return noResultsOnSelect;
+					return no-resultsOnSelect;
 				},
 			};
 		};
@@ -314,16 +314,16 @@
 			restrict: 'AE',
 			controller: ['$scope', function($scope) {
 				$scope.keyPressEvent = function(e) {
-					if ($scope.selectedHintIndex !== null && (e.keyCode === 13 || e.keyCode === 9)) {
-						$scope.select($scope.selectedHintIndex);
+					if ($scope.selected-hintIndex !== null && (e.keyCode === 13 || e.keyCode === 9)) {
+						$scope.select($scope.selected-hintIndex);
 					} else if (e.keyCode === 40) {
 						// key down
-						if ($scope.selectedHintIndex !== null && $scope.hints.length > 1) {
+						if ($scope.selected-hintIndex !== null && $scope.hints.length > 1) {
 							var newIndex;
-							if ($scope.selectedHintIndex === $scope.hints.length - 1) {
+							if ($scope.selected-hintIndex === $scope.hints.length - 1) {
 								newIndex = 0;
 							} else {
-								newIndex = $scope.selectedHintIndex + 1;
+								newIndex = $scope.selected-hintIndex + 1;
 							}
 							$scope.selectRow(newIndex);
 						}
@@ -331,12 +331,12 @@
 						e.stopPropagation();
 					} else if (e.keyCode === 38) {
 						// key up
-						if ($scope.selectedHintIndex !== null && $scope.hints.length > 1) {
+						if ($scope.selected-hintIndex !== null && $scope.hints.length > 1) {
 							var newIndex;
-							if ($scope.selectedHintIndex === 0) {
+							if ($scope.selected-hintIndex === 0) {
 								newIndex = $scope.hints.length - 1;
 							} else {
-								newIndex = $scope.selectedHintIndex - 1;
+								newIndex = $scope.selected-hintIndex - 1;
 							}
 							$scope.selectRow(newIndex);
 						}
@@ -346,7 +346,7 @@
 				};
 			}],
 			compile: function ($element, $attrs) {
-				$element.addClass('autoComplete');
+				$element.addClass('auto-complete');
 				
 				var inputElem = $element[0].querySelector('input');
 				if (inputElem) {
@@ -359,7 +359,7 @@
 				inputElem.removeAttr('data-ng-model');
 				var hintInputElem = inputElem.clone();
 
-				inputElem.addClass('textEntry');
+				inputElem.addClass('text-entry');
 				hintInputElem.addClass('hintBox');
 				hintInputElem.attr('tabindex', '-1');
 				hintInputElem.removeAttr('placeholder');
@@ -371,7 +371,7 @@
 				$element.append(hintInputElem);
 				$element.append(angular.element('<iframe></iframe>'));
 				$element.append(inputElem);
-				$element.append(angular.element('<div class="loadingIndicator"></div>'));
+				$element.append(angular.element('<div class="loading-indicator"></div>'));
 
 				return {
 					pre: function(scope, element, attrs) {
@@ -379,19 +379,19 @@
 
 						var templateUrl = isDefined(attrs.templateUrl) ? attrs.templateUrl : "'" + defaultTemplateUrl + "'";
 						var hintList = $compile('\
-							<div class="scrollerContainer">\
+							<div class="scroll-container">\
 								<iframe></iframe>\
 								<div class="scroller" ng-hide="hints.length < 1">\
 									<div class="hint"\
 											ng-repeat="hint in hints"\
 											ng-click="select($index)"\
 											ng-mouseover="hoverOver($index)"\
-											ng-class="{selectedHint: $index === selectedHintIndex}">\
+											ng-class="{selected-hint: $index === selected-hintIndex}">\
 										<div nz-auto-complete-include="' + templateUrl + '"></div>\
 									</div>\
 								</div>\
-								<div class="scroller noResults">\
-									<span class="noResults hint">{{noResultsText}}</span>\
+								<div class="scroller no-results">\
+									<span class="no-results hint">{{no-resultsText}}</span>\
 								</div>\
 							</div>\
 						')(scope);
@@ -402,9 +402,9 @@
 							scope.displayPath = attrs.displayPath;
 						}
 
-						scope.noResultsText = "No Results";
-						if (isDefined(attrs.noResultsText)) {
-							scope.noResultsText = attrs.noResultsText;
+						scope.no-resultsText = "No Results";
+						if (isDefined(attrs.no-resultsText)) {
+							scope.no-resultsText = attrs.no-resultsText;
 						}
 
 						scope.hoverOver = function(selectedIndex) {
@@ -413,9 +413,9 @@
 
 					},
 					post: function (scope, element, attrs) {
-						var inputElem     = angular.element(element[0].querySelector('.textEntry'));
+						var inputElem     = angular.element(element[0].querySelector('.text-entry'));
 						var hintInputElem = angular.element(element[0].querySelector('.hintBox'));
-						var hintList      = angular.element(element[0].querySelector('.scrollerContainer'));
+						var hintList      = angular.element(element[0].querySelector('.scroll-container'));
 
 						var modelCtrl = inputElem.controller('ngModel');
 						scope.ngModelCtrl = modelCtrl;
@@ -462,26 +462,26 @@
 							isSelectionRequired = true;
 						}
 
-						var noResultsOnSelect = nzAutoCompleteConfig.isNoResultsOnSelect();
-						if (attrs.noResultsOnSelect === '' || attrs.noResultsOnSelect === 'true') {
-							noResultsOnSelect = true;
+						var no-resultsOnSelect = nzAutoCompleteConfig.isNoResultsOnSelect();
+						if (attrs.no-resultsOnSelect === '' || attrs.no-resultsOnSelect === 'true') {
+							no-resultsOnSelect = true;
 						}
 						var ignoreNextRestuls = false;
 
 						var getHintDisplay = function() {
-							var hintDisplayObj = scope.hints[scope.selectedHintIndex];
+							var hintDisplayObj = scope.hints[scope.selected-hintIndex];
 							if (scope.displayPath !== null) {
 								return $parse(scope.displayPath)(hintDisplayObj);
 							}
 							return hintDisplayObj;
 						};
 						scope.selectRow = function(index) {
-							if (index === scope.selectedHintIndex) {return;}
+							if (index === scope.selected-hintIndex) {return;}
 
 							if (0 <= index && index < scope.hints.length) {
 								var scroller = element[0].querySelector('.scroller');
 
-								scope.selectedHintIndex = index;
+								scope.selected-hintIndex = index;
 
 								//var displayHint = !(inputElem[0].scrollWidth > inputElem[0].clientWidth);
 								var inputStyledDiv  = nzService.copyComputedStyles(angular.element('<div></div>')[0], inputElem[0]);
@@ -515,13 +515,13 @@
 
 								$timeout(function() {
 									hintList.css('display', 'block');
-									var selectedHint = scroller.querySelector('.selectedHint');
-									if (selectedHint.offsetTop < scroller.scrollTop) {
+									var selected-hint = scroller.querySelector('.selected-hint');
+									if (selected-hint.offsetTop < scroller.scrollTop) {
 										// scrollUp
-										scroller.scrollTop = selectedHint.offsetTop;
-									} else if (selectedHint.offsetTop + selectedHint.clientHeight > scroller.scrollTop + scroller.clientHeight) {
+										scroller.scrollTop = selected-hint.offsetTop;
+									} else if (selected-hint.offsetTop + selected-hint.clientHeight > scroller.scrollTop + scroller.clientHeight) {
 										// scrollDown
-										scroller.scrollTop = selectedHint.offsetTop + selectedHint.clientHeight - scroller.clientHeight;
+										scroller.scrollTop = selected-hint.offsetTop + selected-hint.clientHeight - scroller.clientHeight;
 									}
 									hintList.css('display', '');
 								}, 50, false);
@@ -530,12 +530,12 @@
 						};
 
 						scope.select = function(selectedIndex) {
-							scope.selectedHintIndex = selectedIndex;
-							var selectedObj = scope.hints[scope.selectedHintIndex];
+							scope.selected-hintIndex = selectedIndex;
+							var selectedObj = scope.hints[scope.selected-hintIndex];
 							$parse(ngModelName).assign(scope.$parent, selectedObj);
 							inputElem[0].focus();
 							scope.$emit('AutoCompleteSelect', selectedObj);
-							if (noResultsOnSelect) {
+							if (no-resultsOnSelect) {
 								ignoreNextRestuls = true;
 							}
 						};
@@ -547,7 +547,7 @@
 							if (scope.hints.length > 0) {
 								scope.selectRow(0);
 							} else {
-								element.addClass('noResults');
+								element.addClass('no-results');
 							}
 
 							if (positionHintsFn) {
@@ -565,7 +565,7 @@
 							if (value) {
 								var result;
 								if (isSelectionRequired) {
-									var selectedObj = scope.hints[scope.selectedHintIndex];
+									var selectedObj = scope.hints[scope.selected-hintIndex];
 									if (scope.hints && scope.hints.length > 0) {
 										var selectedStringValue = selectedObj;
 										if (isDefined(scope.displayPath)) {
@@ -600,9 +600,9 @@
 						var getResults = function() {
 							//setParentModel();
 
-							scope.selectedHintIndex = null;
+							scope.selected-hintIndex = null;
 							scope.hints = [];
-							element.removeClass('noResults');
+							element.removeClass('no-results');
 							// Stop any pending requests
 
 							$timeout.cancel(pendingResultsFunctionCall);
