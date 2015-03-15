@@ -346,7 +346,7 @@
 				};
 			}],
 			compile: function ($element, $attrs) {
-				$element.addClass('autoComplete');
+				$element.addClass('auto-complete');
 				
 				var inputElem = $element[0].querySelector('input');
 				if (inputElem) {
@@ -359,8 +359,8 @@
 				inputElem.removeAttr('data-ng-model');
 				var hintInputElem = inputElem.clone();
 
-				inputElem.addClass('textEntry');
-				hintInputElem.addClass('hintBox');
+				inputElem.addClass('text-entry');
+				hintInputElem.addClass('hint-box');
 				hintInputElem.attr('tabindex', '-1');
 				hintInputElem.removeAttr('placeholder');
 
@@ -371,7 +371,7 @@
 				$element.append(hintInputElem);
 				$element.append(angular.element('<iframe></iframe>'));
 				$element.append(inputElem);
-				$element.append(angular.element('<div class="loadingIndicator"></div>'));
+				$element.append(angular.element('<div class="loading-indicator"></div>'));
 
 				return {
 					pre: function(scope, element, attrs) {
@@ -379,7 +379,7 @@
 
 						var templateUrl = isDefined(attrs.templateUrl) ? attrs.templateUrl : "'" + defaultTemplateUrl + "'";
 						var hintList = $compile('\
-							<div class="scrollerContainer">\
+							<div class="scroller-container">\
 								<iframe></iframe>\
 								<div class="scroller" ng-hide="hints.length < 1">\
 									<div class="hint"\
@@ -390,8 +390,8 @@
 										<div nz-auto-complete-include="' + templateUrl + '"></div>\
 									</div>\
 								</div>\
-								<div class="scroller noResults">\
-									<span class="noResults hint">{{noResultsText}}</span>\
+								<div class="scroller no-results">\
+									<span class="no-results hint">{{noResultsText}}</span>\
 								</div>\
 							</div>\
 						')(scope);
@@ -413,9 +413,9 @@
 
 					},
 					post: function (scope, element, attrs) {
-						var inputElem     = angular.element(element[0].querySelector('.textEntry'));
-						var hintInputElem = angular.element(element[0].querySelector('.hintBox'));
-						var hintList      = angular.element(element[0].querySelector('.scrollerContainer'));
+						var inputElem     = angular.element(element[0].querySelector('.text-entry'));
+						var hintInputElem = angular.element(element[0].querySelector('.hint-box'));
+						var hintList      = angular.element(element[0].querySelector('.scroller-container'));
 
 						var modelCtrl = inputElem.controller('ngModel');
 						scope.ngModelCtrl = modelCtrl;
@@ -515,7 +515,7 @@
 
 								$timeout(function() {
 									hintList.css('display', 'block');
-									var selectedHint = scroller.querySelector('.selectedHint');
+									var selectedHint = scroller.querySelector('.selected-hint');
 									if (selectedHint.offsetTop < scroller.scrollTop) {
 										// scrollUp
 										scroller.scrollTop = selectedHint.offsetTop;
@@ -547,7 +547,7 @@
 							if (scope.hints.length > 0) {
 								scope.selectRow(0);
 							} else {
-								element.addClass('noResults');
+								element.addClass('no-results');
 							}
 
 							if (positionHintsFn) {
@@ -602,7 +602,7 @@
 
 							scope.selectedHintIndex = null;
 							scope.hints = [];
-							element.removeClass('noResults');
+							element.removeClass('no-results');
 							// Stop any pending requests
 
 							$timeout.cancel(pendingResultsFunctionCall);
