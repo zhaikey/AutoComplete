@@ -386,7 +386,7 @@
 											ng-repeat="hint in hints"\
 											ng-click="select($index)"\
 											ng-mouseover="hoverOver($index)"\
-											ng-class="{selectedHint: $index === selectedHintIndex}">\
+											ng-class="{\'selected-hint\': $index === selectedHintIndex}">\
 										<div nz-auto-complete-include="' + templateUrl + '"></div>\
 									</div>\
 								</div>\
